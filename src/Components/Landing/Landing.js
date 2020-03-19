@@ -3,6 +3,7 @@ import Title from "Shared/Title";
 import Button from "Shared/Button";
 import "./Landing.css";
 import HeaderBrand from "Shared/HeaderBrand";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -17,9 +18,11 @@ const Landing = () => {
         <Title className="Landing-title Landing-subtitle" level={4}>
           This is the "To Do Recording App".
         </Title>
-        <Button color="primary" withArrow>
-          Get Started
-        </Button>
+        <Link to="/todos">
+          <Button color="primary" withArrow>
+            Get Started
+          </Button>
+        </Link>
       </div>
       <div className="wave wave1"></div>
       <div className="wave wave2"></div>

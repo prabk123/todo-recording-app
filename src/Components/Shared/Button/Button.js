@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 const Button = props => {
   const { children, variant, className, style, color, withArrow } = props;
   return (
-    <a
+    <button
       style={style}
       className={`Button-root Button-${variant} Button-${color} ${className}`}
     >
       {children}
       {withArrow ? <i className="fas fa-angle-right Button-arrow"></i> : null}
-    </a>
+    </button>
   );
 };
 

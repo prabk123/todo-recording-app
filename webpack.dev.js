@@ -9,6 +9,10 @@ module.exports = merge(common, {
     filename: "main.js",
     path: path.resolve(__dirname, "dist")
   },
+  devServer: {
+    port: 3000,
+    historyApiFallback: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html"
