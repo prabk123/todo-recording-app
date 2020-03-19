@@ -5,7 +5,8 @@ module.exports = {
   resolve: {
     alias: {
       Shared: path.resolve(__dirname, "./src/Components/Shared"),
-      Assets: path.resolve(__dirname, "./src/Assets")
+      Assets: path.resolve(__dirname, "./src/Assets"),
+      Actions: path.resolve(__dirname, "./src/Actions")
     }
   },
   module: {
