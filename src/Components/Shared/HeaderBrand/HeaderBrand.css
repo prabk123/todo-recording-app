@@ -16,6 +16,13 @@
 .HeaderBrand-light {
   color: #fff;
 }
+
 .HeaderBrand-dark {
   color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+  .HeaderBrand-collapse {
+    display: none;
+  }
 }

@@ -12,8 +12,20 @@
   color: #218bef;
 }
 
+.Button-red {
+  background: #ffe7e9;
+  border: 1px solid #ffe7e9;
+  color: #cc4050;
+}
+
+.Button-green {
+  background: #e2f5cd;
+  border: 1px solid #e2f5cd;
+  color: #7bb13b;
+}
+
 .Button-root:hover {
-  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  /* box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28); */
   cursor: pointer;
 }
 
@@ -24,4 +36,17 @@
 
 .Button-root:hover .Button-arrow {
   transform: translateX(5px);
+}
+
+.Button-primary:hover {
+  background: #188cff !important;
+  color: #fff !important;
+}
+.Button-red:hover {
+  background: #cc4050 !important;
+  color: #fff !important;
+}
+.Button-green:hover {
+  background: #7bb13b !important;
+  color: #fff !important;
 }

@@ -10,6 +10,14 @@ const ToDos = props => {
     <div style={{ height: "2000px" }}>
       <ToDosHeader />
       <Container className="ToDos-container" maxWidth="lg">
+        <Title level={4}>To Do List</Title>
+        <hr
+          style={{
+            marginTop: "20px",
+            marginBottom: "20px",
+            border: "1px solid #efefef"
+          }}
+        />
         <div className="ToDos-grid">
           <ToDoItem
             name="Test Name"

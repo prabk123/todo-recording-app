@@ -26,8 +26,7 @@
 }
 
 .Landing-header {
-  display: flex;
-  padding: 0.5em 1em;
+  /* display: flex; */
   position: absolute;
   top: 0;
   left: 0;
