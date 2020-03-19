@@ -15,6 +15,13 @@ module.exports = {
             outputPath: "assets"
           }
         }
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
       }
     ]
   }
