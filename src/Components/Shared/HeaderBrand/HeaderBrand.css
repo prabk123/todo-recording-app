@@ -1,0 +1,15 @@
+.HeaderBrand-root {
+  display: flex;
+  align-items: center;
+}
+
+.HeaderBrand-avatar {
+  filter: drop-shadow(0 0 0.75rem #fff);
+  width: 60px;
+  margin-right: 20px;
+}
+
+.HeaderBrand-title {
+  color: #fff;
+  margin: 0;
+}

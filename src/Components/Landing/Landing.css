@@ -1,0 +1,25 @@
+.Landing-root {
+  background-color: #188cfd;
+  width: 100%;
+  height: 100%;
+}
+
+.Landing-main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3D(-50%, -50%, 0);
+}
+
+.Landing-title {
+  color: #fff;
+}
+
+.Landing-subtitle {
+  margin-bottom: 30px;
+}
+
+.Landing-header {
+  display: flex;
+  padding: 0.5em 1em;
+}

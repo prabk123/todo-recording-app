@@ -1,0 +1,26 @@
+.Button-root {
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  transition: all 0.3s;
+  font-size: 18px;
+}
+
+.Button-primary {
+  background: #e3f1ff;
+  color: #218bef;
+}
+
+.Button-root:hover {
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  cursor: pointer;
+}
+
+.Button-arrow {
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+
+.Button-root:hover .Button-arrow {
+  transform: translateX(5px);
+}

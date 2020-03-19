@@ -1,5 +1,13 @@
+const path = require("path");
+
 module.exports = {
   entry: "./src/index.js",
+  resolve: {
+    alias: {
+      Shared: path.resolve(__dirname, "./src/Components/Shared"),
+      Assets: path.resolve(__dirname, "./src/Assets")
+    }
+  },
   module: {
     rules: [
       {

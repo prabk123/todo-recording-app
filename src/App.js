@@ -1,7 +1,8 @@
 import React from "react";
+import Landing from "./Components/Landing";
 
 const App = () => {
-  return <h1>HELLO FROM APP.js</h1>;
+  return <Landing />;
 };
 
 export default App;
