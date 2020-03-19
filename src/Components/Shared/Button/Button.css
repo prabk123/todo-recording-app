@@ -8,6 +8,7 @@
 
 .Button-primary {
   background: #e3f1ff;
+  border: 1px solid #e3f1ff;
   color: #218bef;
 }
 

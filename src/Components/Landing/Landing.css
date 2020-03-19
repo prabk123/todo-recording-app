@@ -2,28 +2,37 @@
   background-color: #188cfd;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 650px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Landing-main {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translate3D(-50%, -40%, 0);
+  width: fit-content;
+  margin-bottom: 100px;
+  padding: 0em 1em;
+  max-width: 800px;
 }
 
 .Landing-title {
   color: #fff;
 }
 
-.Landing-subtitle {
+.Landing-info {
   margin-bottom: 30px;
+  color: #fff;
 }
 
 .Landing-header {
   display: flex;
   padding: 0.5em 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .Landing-root .wave {

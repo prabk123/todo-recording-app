@@ -1,0 +1,15 @@
+.Container-root {
+  padding: 0.5em 1em;
+  margin: 0 auto;
+  display: block;
+}
+
+.Container-sm {
+  max-width: 600px;
+}
+.Container-md {
+  max-width: 960px;
+}
+.Container-lg {
+  max-width: 1280px;
+}
