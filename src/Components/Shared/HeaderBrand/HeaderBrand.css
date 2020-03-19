@@ -10,6 +10,12 @@
 }
 
 .HeaderBrand-title {
-  color: #fff;
   margin: 0;
+}
+
+.HeaderBrand-light {
+  color: #fff;
+}
+.HeaderBrand-dark {
+  color: #000;
 }

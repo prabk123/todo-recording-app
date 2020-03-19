@@ -4,12 +4,13 @@ import Button from "Shared/Button";
 import "./Landing.css";
 import HeaderBrand from "Shared/HeaderBrand";
 import { Link } from "react-router-dom";
+import Container from "Shared/Container";
 
 const Landing = () => {
   return (
     <div>
       <div className="Landing-header">
-        <HeaderBrand />
+        <HeaderBrand type="light" />
       </div>
       <div className="Landing-root">
         <div className="Landing-main">
@@ -35,7 +36,9 @@ const Landing = () => {
         <div className="wave wave3"></div>
         <div className="wave wave4"></div>
       </div>
-      <div style={{ height: "2000px" }}></div>
+      <Container style={{ height: "2000px" }} maxWidth={"md"}>
+        <Title level={4}>Installation Instructions</Title>
+      </Container>
     </div>
   );
 };
