@@ -3,6 +3,7 @@ import Title from "Shared/Title";
 import ToDosHeader from "./ToDosHeader";
 import "./ToDos.css";
 import Container from "Shared/Container";
+import ToDoItem from "./ToDoItem";
 
 const ToDos = props => {
   return (
@@ -10,62 +11,21 @@ const ToDos = props => {
       <ToDosHeader />
       <Container className="ToDos-container" maxWidth="lg">
         <div className="ToDos-grid">
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
-          <div
-            style={{
-              height: "200px",
-              background: "#f2f2f2",
-              borderRadius: "10px"
-            }}
-          ></div>
+          <ToDoItem
+            name="Test Name"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            createdAt={new Date()}
+          />
+          <ToDoItem
+            name="Test Name"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            createdAt={new Date()}
+          />
+          <ToDoItem
+            name="Test Name"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            createdAt={new Date()}
+          />
         </div>
       </Container>
     </div>
