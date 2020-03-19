@@ -3,9 +3,10 @@ import Title from "Shared/Title";
 import ToDosHeader from "./ToDosHeader";
 import "./ToDos.css";
 import Container from "Shared/Container";
-import Modal from "Shared/Modal";
 import ToDoItem from "./ToDoItem";
 import ToDoModal from "./ToDoModal";
+import { connect } from "react-redux";
+import { getTodos, addTodo, updateTodo, removeTodo } from "Actions/todoActions";
 
 class ToDos extends Component {
   constructor(props) {
@@ -17,6 +18,10 @@ class ToDos extends Component {
     this.createToDo = this.createToDo.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getTodos();
+  }
+
   openModal(type) {
     this.setState({ showModal: true, modalType: type });
   }
@@ -26,13 +31,16 @@ class ToDos extends Component {
   }
 
   createToDo(name, description) {
-    // Dispatch an action to create a todo
-    console.log(name, description);
+    const createdAt = new Date();
+    const todo = { name, description, createdAt };
+    this.props.addTodo(todo);
   }
 
   render() {
+    console.log(this.props.todos);
+    const { todos } = this.props;
     return (
-      <div style={{ height: "2000px" }}>
+      <div>
         <ToDoModal
           open={this.state.showModal}
           onClose={this.handleClose}
@@ -48,27 +56,33 @@ class ToDos extends Component {
               border: "1px solid #efefef"
             }}
           />
-          <div className="ToDos-grid">
-            <ToDoItem
-              name="Test Name"
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              createdAt={new Date()}
-            />
-            <ToDoItem
-              name="Test Name"
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              createdAt={new Date()}
-            />
-            <ToDoItem
-              name="Test Name"
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-              createdAt={new Date()}
-            />
-          </div>
+          {todos.length > 0 ? (
+            <div className="ToDos-grid">
+              {todos.map(x => (
+                <ToDoItem
+                  key={x.id}
+                  name={x.name}
+                  description={x.description}
+                  createdAt={x.createdAt}
+                />
+              ))}
+            </div>
+          ) : null}
         </Container>
       </div>
     );
   }
 }
 
-export default ToDos;
+const mapStateToProps = state => {
+  return {
+    todos: state.todoReducer.todos
+  };
+};
+
+export default connect(mapStateToProps, {
+  getTodos,
+  addTodo,
+  updateTodo,
+  removeTodo
+})(ToDos);

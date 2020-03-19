@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { configureStore } from "./Strore";
+import { configureStore } from "./Store";
 
 const store = configureStore();
 

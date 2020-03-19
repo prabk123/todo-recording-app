@@ -22,6 +22,7 @@ class ToDoModal extends Component {
     if (name && description) {
       this.props.createToDo(name, description);
       this.props.onClose();
+      this.setState({ name: "", description: "", error: "" });
     } else {
       this.setState({
         error: "Please give your 'To Do' a name and a description."
@@ -50,7 +51,7 @@ class ToDoModal extends Component {
               className="ToDoModal-input ToDoModal-description"
               name="description"
               placeholder="Give your 'To Do' a description..."
-              value={this.state.value}
+              value={this.state.description}
               onChange={this.handleChange}
             ></textarea>
           </div>
