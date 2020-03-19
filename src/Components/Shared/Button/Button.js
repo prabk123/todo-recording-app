@@ -10,10 +10,12 @@ const Button = props => {
     style,
     color,
     withArrow,
-    onClick
+    onClick,
+    type
   } = props;
   return (
     <button
+      type={type}
       style={style}
       className={`Button-root Button-${variant} Button-${color} ${className}`}
       onClick={onClick}

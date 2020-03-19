@@ -21,6 +21,7 @@
   padding: 3em;
   display: block;
   border-radius: 10px;
+  position: static;
 }
 
 .Modal-open {

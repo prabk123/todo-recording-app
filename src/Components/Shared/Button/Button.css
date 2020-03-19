@@ -12,6 +12,9 @@
   color: #218bef;
 }
 
+.Button-root {
+  outline: none;
+}
 .Button-red {
   background: #ffe7e9;
   border: 1px solid #ffe7e9;

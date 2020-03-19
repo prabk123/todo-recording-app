@@ -3,7 +3,6 @@ import HeaderBrand from "Shared/HeaderBrand";
 import "./ToDosHeader.css";
 import Container from "Shared/Container";
 import Button from "Shared/Button";
-import Tooltip from "Shared/Tooltip";
 
 const ToDosHeader = props => {
   const { openModal } = props;
@@ -14,15 +13,13 @@ const ToDosHeader = props => {
           <HeaderBrand collapse />
         </div>
         <div className="ToDosHeader-actions">
-          <Tooltip content="TEST">
-            <Button
-              withArrow={false}
-              className="ToDosHeader-btn"
-              onClick={openModal}
-            >
-              <i className="fas fa-plus"></i>
-            </Button>
-          </Tooltip>
+          <Button
+            withArrow={false}
+            className="ToDosHeader-btn"
+            onClick={() => openModal("create")}
+          >
+            <i className="fas fa-plus"></i>
+          </Button>
           <Button withArrow={false} color="red" className="ToDosHeader-btn">
             <i className="fas fa-video"></i>
           </Button>

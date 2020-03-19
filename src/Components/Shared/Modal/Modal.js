@@ -3,7 +3,7 @@ import "./Modal.css";
 import Container from "Shared/Container";
 
 const Modal = props => {
-  const { children, onClose, open } = props;
+  const { children, onClose, open, maxWidth, style } = props;
   const openClass = open ? "Modal-open" : "Modal-close";
   return (
     <div
@@ -15,7 +15,9 @@ const Modal = props => {
         }
       }}
     >
-      <div className="Modal-root">{children}</div>
+      <div className="Modal-root" style={{ ...style, maxWidth }}>
+        {children}
+      </div>
     </div>
   );
 };
