@@ -5,10 +5,17 @@ import {
   REMOVE_TODO
 } from "Actions/actionTypes";
 
-const DEFAULT_STATE = {
-  todos: [],
-  id: 0
-};
+const storedReducer = JSON.parse(localStorage.getItem("todoReducer"));
+console.log(storedReducer);
+let DEFAULT_STATE;
+if (storedReducer) {
+  DEFAULT_STATE = storedReducer;
+} else {
+  DEFAULT_STATE = {
+    todos: [],
+    id: 0
+  };
+}
 
 const todoReducer = (state = DEFAULT_STATE, action) => {
   let newState;
@@ -19,7 +26,7 @@ const todoReducer = (state = DEFAULT_STATE, action) => {
       console.log(action);
       newState = { ...state };
       newState.id++;
-      return {
+      newState = {
         ...newState,
         todos: [
           ...newState.todos,
@@ -31,13 +38,17 @@ const todoReducer = (state = DEFAULT_STATE, action) => {
           }
         ]
       };
+      localStorage.setItem("todoReducer", JSON.stringify(newState));
+      return newState;
     case UPDATE_TODO:
       let idx = state.todos.findIndex(x => x.id === action.todo.id);
       newState = { ...state };
       newState.todos[idx] = action.todo;
+      localStorage.setItem("todoReducer", JSON.stringify(newState));
       return newState;
     case REMOVE_TODO:
       let todos = state.todos.filter(x => x.id !== action.id);
+      localStorage.setItem("todoReducer", JSON.stringify({ ...state, todos }));
       return { ...state, todos };
     default:
       return state;
