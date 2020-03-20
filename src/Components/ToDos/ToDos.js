@@ -63,7 +63,7 @@ class ToDos extends Component {
     this.props.addTodo(todo);
   }
 
-  async animateAction(record, type) {
+  async animateAction(record, type, changeIdx) {
     const animationType =
       type === ADD_TODO
         ? "add"
@@ -74,13 +74,13 @@ class ToDos extends Component {
         : null;
     if (animationType) {
       console.log(record);
-      record.todos[record.changeIdx].highlight = animationType;
+      record.todos[changeIdx].highlight = animationType;
       await this.wait(100);
       this.setState(currentState => {
         return { todos: record.todos, playing: true };
       });
       await this.wait(500);
-      record.todos[record.changeIdx].highlight = undefined;
+      record.todos[changeIdx].highlight = undefined;
       await this.wait(400);
     }
   }
@@ -95,16 +95,20 @@ class ToDos extends Component {
     let record = [...this.props.record];
     for (let i = 0; i < record.length; i++) {
       if (record[i].actionType === UPDATE_TODO) {
-        await this.animateAction(record[i], UPDATE_TODO);
+        await this.animateAction(record[i], UPDATE_TODO, record[i].changeIdx);
       }
       if (record[i].actionType === REMOVE_TODO) {
-        await this.animateAction(record[i - 1], REMOVE_TODO);
+        await this.animateAction(
+          record[i - 1],
+          REMOVE_TODO,
+          record[i].changeIdx
+        );
       }
       this.setState(currentState => {
         return { todos: record[i].todos };
       });
       if (record[i].actionType === ADD_TODO) {
-        await this.animateAction(record[i], ADD_TODO);
+        await this.animateAction(record[i], ADD_TODO, record[i].changeIdx);
       }
       if (record[i].actionType === START_RECORD) {
         await this.wait(1000);
