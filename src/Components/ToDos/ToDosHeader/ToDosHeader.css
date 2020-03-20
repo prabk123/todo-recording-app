@@ -38,4 +38,8 @@
   .ToDosHeader-btn-text {
     display: none;
   }
+  .ToDosHeader-btn {
+    margin-left: 5px;
+    font-size: 14px;
+  }
 }
