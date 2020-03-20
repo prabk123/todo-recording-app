@@ -29,7 +29,7 @@
   visibility: hidden;
 }
 .ToDosHeader-btn:hover .ToDosHeader-btn-text {
-  max-width: 7rem;
+  max-width: 8rem;
   padding-left: 10px;
   visibility: visible;
 }

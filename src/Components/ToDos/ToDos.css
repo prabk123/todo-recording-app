@@ -6,4 +6,16 @@
 
 .ToDos-container {
   margin-top: 100px;
+  padding-bottom: 100px;
+}
+
+.ToDos-container-playback {
+  border: 2px solid #cc4050;
+  /* background-color: #ffe7e9; */
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.ToDos-playing-text {
+  color: #cc4050;
 }

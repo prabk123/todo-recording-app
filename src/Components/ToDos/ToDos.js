@@ -6,20 +6,47 @@ import Container from "Shared/Container";
 import ToDoItem from "./ToDoItem";
 import ToDoModal from "./ToDoModal";
 import { connect } from "react-redux";
-import { getTodos, addTodo, updateTodo, removeTodo } from "Actions/todoActions";
+import {
+  getTodos,
+  addTodo,
+  updateTodo,
+  removeTodo,
+  startRecording,
+  stopRecording,
+  resetRecording
+} from "Actions/todoActions";
+import { ADD_TODO, REMOVE_TODO, UPDATE_TODO } from "Actions/actionTypes";
+import { START_RECORD } from "../../Actions/actionTypes";
 
 class ToDos extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false, modalType: "create", selectedTodo: null };
+    this.state = {
+      showModal: false,
+      modalType: "create",
+      selectedTodo: null,
+      todos: [],
+      playing: false
+    };
 
     this.openModal = this.openModal.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.createToDo = this.createToDo.bind(this);
+    this.playRecording = this.playRecording.bind(this);
+    this.animateAction = this.animateAction.bind(this);
   }
 
   componentDidMount() {
-    this.props.getTodos();
+    const { todos, getTodos } = this.props;
+    this.setState({ todos });
+    getTodos();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { todos } = this.props;
+    if (todos !== prevProps.todos) {
+      this.setState({ todos });
+    }
   }
 
   openModal(type, selectedTodo = null) {
@@ -36,8 +63,72 @@ class ToDos extends Component {
     this.props.addTodo(todo);
   }
 
-  render() {
+  async animateAction(record, type) {
+    const animationType =
+      type === ADD_TODO
+        ? "add"
+        : type === UPDATE_TODO
+        ? "update"
+        : type === REMOVE_TODO
+        ? "remove"
+        : null;
+    if (animationType) {
+      console.log(record);
+      record.todos[record.changeIdx].highlight = animationType;
+      await this.wait(100);
+      this.setState(currentState => {
+        return { todos: record.todos, playing: true };
+      });
+      await this.wait(500);
+      record.todos[record.changeIdx].highlight = undefined;
+      await this.wait(400);
+    }
+  }
+
+  async playRecording() {
+    console.log("HIT1");
+    this.setState(currentState => {
+      return { playing: true };
+    });
+    console.log("HIT2");
     const { todos } = this.props;
+    let record = [...this.props.record];
+    for (let i = 0; i < record.length; i++) {
+      if (record[i].actionType === UPDATE_TODO) {
+        await this.animateAction(record[i], UPDATE_TODO);
+      }
+      if (record[i].actionType === REMOVE_TODO) {
+        await this.animateAction(record[i - 1], REMOVE_TODO);
+      }
+      this.setState(currentState => {
+        return { todos: record[i].todos };
+      });
+      if (record[i].actionType === ADD_TODO) {
+        await this.animateAction(record[i], ADD_TODO);
+      }
+      if (record[i].actionType === START_RECORD) {
+        await this.wait(1000);
+      }
+    }
+    await this.wait(1000);
+    this.setState(currentState => {
+      return { todos, playing: false };
+    });
+  }
+
+  wait(ms) {
+    return new Promise((resolve, reject) => setTimeout(resolve, ms));
+  }
+
+  render() {
+    const { todos, playing } = this.state;
+    const {
+      recording,
+      startRecording,
+      stopRecording,
+      resetRecording,
+      record
+    } = this.props;
     return (
       <div>
         <ToDoModal
@@ -48,8 +139,27 @@ class ToDos extends Component {
           updateTodo={this.props.updateTodo}
           selectedTodo={this.state.selectedTodo}
         />
-        <ToDosHeader openModal={this.openModal} />
-        <Container className="ToDos-container" maxWidth="lg">
+        <ToDosHeader
+          openModal={this.openModal}
+          recording={recording}
+          startRecording={startRecording}
+          stopRecording={stopRecording}
+          resetRecording={resetRecording}
+          recordLength={record.length}
+          playing={playing}
+          playRecording={this.playRecording}
+        />
+        <Container
+          className={`ToDos-container ${
+            playing ? "ToDos-container-playback" : null
+          }`}
+          maxWidth="lg"
+        >
+          {playing ? (
+            <Title level={6} className="ToDos-playing-text">
+              Playing Recording
+            </Title>
+          ) : null}
           <Title level={4}>To Do List</Title>
           <hr
             style={{
@@ -68,6 +178,7 @@ class ToDos extends Component {
                   createdAt={x.createdAt}
                   onClick={() => this.openModal("update", x)}
                   onDelete={() => this.props.removeTodo(x.id)}
+                  highlight={x.highlight}
                 />
               ))}
             </div>
@@ -80,7 +191,9 @@ class ToDos extends Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todoReducer.todos
+    todos: state.todoReducer.todos,
+    record: state.todoReducer.record,
+    recording: state.todoReducer.recording
   };
 };
 
@@ -88,5 +201,8 @@ export default connect(mapStateToProps, {
   getTodos,
   addTodo,
   updateTodo,
-  removeTodo
+  removeTodo,
+  startRecording,
+  stopRecording,
+  resetRecording
 })(ToDos);

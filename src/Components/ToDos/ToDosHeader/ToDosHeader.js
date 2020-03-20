@@ -5,7 +5,23 @@ import Container from "Shared/Container";
 import Button from "Shared/Button";
 
 const ToDosHeader = props => {
-  const { openModal } = props;
+  const {
+    openModal,
+    recording,
+    startRecording,
+    stopRecording,
+    resetRecording,
+    recordLength,
+    playing,
+    playRecording
+  } = props;
+  const toggleRecording = () => {
+    if (recording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  };
   return (
     <div className="ToDosHeader-root">
       <Container maxWidth="lg" className="ToDosHeader-container">
@@ -14,6 +30,7 @@ const ToDosHeader = props => {
         </div>
         <div className="ToDosHeader-actions">
           <Button
+            disabled={playing}
             withArrow={false}
             className="ToDosHeader-btn"
             onClick={() => openModal("create")}
@@ -21,27 +38,44 @@ const ToDosHeader = props => {
             <i className="fas fa-plus"></i>
             <span className="ToDosHeader-btn-text">Add</span>
           </Button>
-          <Button withArrow={false} color="red" className="ToDosHeader-btn">
-            <i className="fas fa-video"></i>
-            <span className="ToDosHeader-btn-text">Record</span>
+          <Button
+            disabled={playing || (!recording && recordLength > 0)}
+            withArrow={false}
+            color="red"
+            className="ToDosHeader-btn"
+            onClick={toggleRecording}
+          >
+            {recording ? (
+              <React.Fragment>
+                <i className="fas fa-stop"></i>
+                <span className="ToDosHeader-btn-text">Stop</span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <i className="fas fa-video"></i>
+                <span className="ToDosHeader-btn-text">Record</span>
+              </React.Fragment>
+            )}
           </Button>
           <Button
-            disabled={true}
+            disabled={recordLength <= 0 || playing}
             withArrow={false}
             color="green"
             className="ToDosHeader-btn"
+            onClick={playRecording}
           >
             <i className="fas fa-play"></i>
             <span className="ToDosHeader-btn-text">Play</span>
           </Button>
           <Button
-            disabled={true}
+            disabled={recordLength <= 0 || playing}
             withArrow={false}
             color="orange"
             className="ToDosHeader-btn"
+            onClick={resetRecording}
           >
             <i className="fas fa-redo-alt"></i>
-            <span className="ToDosHeader-btn-text">Reset</span>
+            <span className="ToDosHeader-btn-text">Reset Recording</span>
           </Button>
         </div>
       </Container>

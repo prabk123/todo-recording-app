@@ -5,9 +5,12 @@ import "./ToDoItem.css";
 import Moment from "react-moment";
 
 const ToDoItem = props => {
-  const { name, description, createdAt, onClick, onDelete } = props;
+  const { name, description, createdAt, onClick, onDelete, highlight } = props;
   return (
-    <div className="ToDoItem-root" onClick={onClick}>
+    <div
+      className={`ToDoItem-root ${highlight ? `ToDoItem-${highlight}` : ""}`}
+      onClick={onClick}
+    >
       <Button
         className="ToDoItem-delete"
         color="red"

@@ -84,6 +84,21 @@
   visibility: visible;
 }
 
+.ToDoItem-add {
+  border: 1px solid #7bb13b;
+  background: #e2f5cd !important;
+}
+
+.ToDoItem-update {
+  border: 1px solid #218bef;
+  background: #e3f1ff !important;
+}
+
+.ToDoItem-remove {
+  border: 1px solid #cc4050;
+  background: #ffe7e9 !important;
+}
+
 @media only screen and (max-width: 800px) {
   .ToDoItem-delete-text {
     display: none;

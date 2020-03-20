@@ -1,4 +1,12 @@
-import { GET_TODOS, ADD_TODO, UPDATE_TODO, REMOVE_TODO } from "./actionTypes";
+import {
+  GET_TODOS,
+  ADD_TODO,
+  UPDATE_TODO,
+  REMOVE_TODO,
+  START_RECORD,
+  END_RECORD,
+  RESET_RECORD
+} from "./actionTypes";
 
 export const getTodos = () => {
   return { type: GET_TODOS };
@@ -14,4 +22,16 @@ export const updateTodo = todo => {
 
 export const removeTodo = id => {
   return { type: REMOVE_TODO, id };
+};
+
+export const startRecording = () => {
+  return { type: START_RECORD };
+};
+
+export const stopRecording = () => {
+  return { type: END_RECORD };
+};
+
+export const resetRecording = () => {
+  return { type: RESET_RECORD };
 };
