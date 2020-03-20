@@ -83,3 +83,9 @@
   padding-left: 10px;
   visibility: visible;
 }
+
+@media only screen and (max-width: 800px) {
+  .ToDoItem-delete-text {
+    display: none;
+  }
+}
