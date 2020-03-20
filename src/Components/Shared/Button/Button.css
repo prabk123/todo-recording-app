@@ -20,6 +20,11 @@
   border: 1px solid #ffe7e9;
   color: #cc4050;
 }
+.Button-orange {
+  background: #fff0da;
+  border: 1px solid #fff0da;
+  color: #e87d46;
+}
 
 .Button-green {
   background: #e2f5cd;
@@ -40,15 +45,24 @@
   transform: translateX(5px);
 }
 
-.Button-primary:hover {
+.Button-primary:not(.Button-disabled):hover {
   background: #188cff !important;
   color: #fff !important;
 }
-.Button-red:hover {
+.Button-red:not(.Button-disabled):hover {
   background: #cc4050 !important;
   color: #fff !important;
 }
-.Button-green:hover {
+.Button-orange:not(.Button-disabled):hover {
+  background: #e87d46 !important;
+  color: #fff !important;
+}
+.Button-green:not(.Button-disabled):hover {
   background: #7bb13b !important;
   color: #fff !important;
+}
+
+.Button-disabled {
+  opacity: 0.8;
+  cursor: not-allowed !important;
 }

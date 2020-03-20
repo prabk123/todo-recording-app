@@ -19,12 +19,29 @@ const ToDosHeader = props => {
             onClick={() => openModal("create")}
           >
             <i className="fas fa-plus"></i>
+            <span className="ToDosHeader-btn-text">Add</span>
           </Button>
           <Button withArrow={false} color="red" className="ToDosHeader-btn">
             <i className="fas fa-video"></i>
+            <span className="ToDosHeader-btn-text">Record</span>
           </Button>
-          <Button withArrow={false} color="green" className="ToDosHeader-btn">
+          <Button
+            disabled={true}
+            withArrow={false}
+            color="green"
+            className="ToDosHeader-btn"
+          >
             <i className="fas fa-play"></i>
+            <span className="ToDosHeader-btn-text">Play</span>
+          </Button>
+          <Button
+            disabled={true}
+            withArrow={false}
+            color="orange"
+            className="ToDosHeader-btn"
+          >
+            <i className="fas fa-redo-alt"></i>
+            <span className="ToDosHeader-btn-text">Reset</span>
           </Button>
         </div>
       </Container>

@@ -11,13 +11,17 @@ const Button = props => {
     color,
     withArrow,
     onClick,
-    type
+    type,
+    disabled
   } = props;
   return (
     <button
+      disabled={disabled}
       type={type}
       style={style}
-      className={`Button-root Button-${variant} Button-${color} ${className}`}
+      className={`Button-root Button-${variant} Button-${color} ${className} ${
+        disabled ? "Button-disabled" : null
+      }`}
       onClick={onClick}
     >
       {children}
@@ -31,7 +35,8 @@ Button.defaultProps = {
   style: null,
   color: "primary",
   withArrow: true,
-  onClick: () => {}
+  onClick: () => {},
+  disabled: false
 };
 
 Button.propTypes = {
@@ -40,7 +45,8 @@ Button.propTypes = {
   style: PropTypes.object,
   color: PropTypes.string,
   withArrow: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
 export default Button;
