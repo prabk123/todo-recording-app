@@ -11,7 +11,7 @@ import { getTodos, addTodo, updateTodo, removeTodo } from "Actions/todoActions";
 class ToDos extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false, modalType: "create" };
+    this.state = { showModal: false, modalType: "create", selectedTodo: null };
 
     this.openModal = this.openModal.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -22,8 +22,8 @@ class ToDos extends Component {
     this.props.getTodos();
   }
 
-  openModal(type) {
-    this.setState({ showModal: true, modalType: type });
+  openModal(type, selectedTodo = null) {
+    this.setState({ showModal: true, modalType: type, selectedTodo });
   }
 
   handleClose() {
@@ -37,14 +37,16 @@ class ToDos extends Component {
   }
 
   render() {
-    console.log(this.props.todos);
     const { todos } = this.props;
     return (
       <div>
         <ToDoModal
+          type={this.state.modalType}
           open={this.state.showModal}
           onClose={this.handleClose}
           createToDo={this.createToDo}
+          updateTodo={this.props.updateTodo}
+          selectedTodo={this.state.selectedTodo}
         />
         <ToDosHeader openModal={this.openModal} />
         <Container className="ToDos-container" maxWidth="lg">
@@ -64,6 +66,7 @@ class ToDos extends Component {
                   name={x.name}
                   description={x.description}
                   createdAt={x.createdAt}
+                  onClick={() => this.openModal("update", x)}
                 />
               ))}
             </div>

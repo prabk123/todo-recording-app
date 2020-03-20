@@ -87,7 +87,8 @@ const Landing = () => {
         </pre>
         <p>
           Generate a coverage report based on all the tests executed. A detailed
-          coverage report will be exported to the app/coverage folder:
+          coverage report will be exported to the todo-recording-app/coverage
+          folder:
         </p>
         <pre>
           <code>$ npm run test:coverage</code>

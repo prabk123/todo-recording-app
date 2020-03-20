@@ -12,6 +12,18 @@ class ToDoModal extends Component {
     this.hanleSubmit = this.hanleSubmit.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { type, selectedTodo } = this.props;
+    if (type === "update" && selectedTodo !== prevProps.selectedTodo) {
+      this.setState({
+        name: selectedTodo.name,
+        description: selectedTodo.description
+      });
+    } else if (type === "create" && prevProps.type !== "create") {
+      this.setState({ name: "", description: "", error: "" });
+    }
+  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -19,9 +31,16 @@ class ToDoModal extends Component {
   hanleSubmit(e) {
     e.preventDefault();
     const { name, description } = this.state;
+    const { type, selectedTodo } = this.props;
     if (name && description) {
-      this.props.createToDo(name, description);
-      this.props.onClose();
+      if (type === "create") {
+        this.props.createToDo(name, description);
+        this.props.onClose();
+      } else {
+        const newTodo = { ...selectedTodo, name, description };
+        this.props.updateTodo(newTodo);
+        this.props.onClose();
+      }
       this.setState({ name: "", description: "", error: "" });
     } else {
       this.setState({

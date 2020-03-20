@@ -29,13 +29,13 @@ const todoReducer = (state = DEFAULT_STATE, action) => {
       newState = {
         ...newState,
         todos: [
-          ...newState.todos,
           {
             name: action.todo.name,
             description: action.todo.description,
             createdAt: action.todo.createdAt,
             id: newState.id
-          }
+          },
+          ...newState.todos
         ]
       };
       localStorage.setItem("todoReducer", JSON.stringify(newState));
