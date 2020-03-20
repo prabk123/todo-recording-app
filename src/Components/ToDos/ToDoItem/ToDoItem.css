@@ -67,3 +67,19 @@
 .ToDoItem-root:hover .ToDoItem-delete {
   opacity: 1;
 }
+
+.ToDoItem-delete-text {
+  max-width: 0;
+  -webkit-transition: max-width 0.5s, padding-left 0.5s;
+  transition: max-width 0.5s, padding-left 0.5s;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  visibility: hidden;
+}
+.ToDoItem-delete:hover .ToDoItem-delete-text {
+  max-width: 7rem;
+  padding-left: 10px;
+  visibility: visible;
+}

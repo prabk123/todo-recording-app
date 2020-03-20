@@ -18,6 +18,7 @@ const ToDoItem = props => {
         }}
       >
         <i className="fas fa-trash-alt"></i>
+        <span className="ToDoItem-delete-text">Delete</span>
       </Button>
       <div>
         <Title className="ToDoItem-title" level={6}>
