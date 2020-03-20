@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   background: #f9f9f9;
+  z-index: 9999;
 }
 
 .ToDosHeader-container {

@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .ToDoItem-created {
@@ -50,4 +52,18 @@
 .ToDoItem-root:hover .ToDoItem-created {
   background: #188cff;
   color: #fff;
+}
+
+.ToDoItem-delete {
+  width: fit-content;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 14px;
+  opacity: 0;
+  z-index: 99;
+}
+
+.ToDoItem-root:hover .ToDoItem-delete {
+  opacity: 1;
 }

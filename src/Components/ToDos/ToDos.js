@@ -67,6 +67,7 @@ class ToDos extends Component {
                   description={x.description}
                   createdAt={x.createdAt}
                   onClick={() => this.openModal("update", x)}
+                  onDelete={() => this.props.removeTodo(x.id)}
                 />
               ))}
             </div>
