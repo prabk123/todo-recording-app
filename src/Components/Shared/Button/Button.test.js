@@ -103,4 +103,21 @@ describe("Button Component", () => {
       expect(wrapper.length).toBe(0);
     });
   });
+
+  describe("Check PropTypes", () => {
+    it("Should not thow a warning", () => {
+      const expectedProps = {
+        className: "test-class",
+        style: { background: "#fff" },
+        color: "red",
+        withArrow: false,
+        onClick: () => {
+          return 1 + 1;
+        },
+        disabled: false
+      };
+      const propsErr = checkProps(Button, expectedProps);
+      expect(propsErr).toBeUndefined();
+    });
+  });
 });

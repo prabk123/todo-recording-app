@@ -8,6 +8,7 @@ const Modal = props => {
   const openClass = open ? "Modal-open" : "Modal-close";
   return (
     <div
+      data-test="Modal"
       className={`Modal-dimmer ${openClass} ${className}`}
       data-target="dimmer"
       onClick={e => {
@@ -16,7 +17,11 @@ const Modal = props => {
         }
       }}
     >
-      <div className="Modal-root" style={{ ...style, maxWidth }}>
+      <div
+        data-test="Modal-inner"
+        className="Modal-root"
+        style={{ ...style, maxWidth }}
+      >
         {children}
       </div>
     </div>
