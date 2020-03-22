@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { findByTestAtrr, checkProps } from "../../../Services";
+import { findByTestAtrr, checkProps } from "Services";
 import Button from "./Button";
 
 const setUp = (props = {}) => {
@@ -56,19 +56,21 @@ describe("Button Component", () => {
       };
       component = setUp(props);
     });
+
     it("Should render without errors", () => {
       const wrapper = findByTestAtrr(component, "Button");
       expect(wrapper.length).toBe(1);
     });
+
     it("Should render its children without errors", () => {
       const wrapper = findByTestAtrr(component, "Button-children");
       expect(wrapper.length).toBe(1);
     });
+
     it("Should NOT emit a callback on click event", () => {
       const button = findByTestAtrr(component, "Button");
       button.simulate("click");
       const callback = func.mock.calls.length;
-      console.log(callback);
       expect(callback).toBe(0);
     });
   });
@@ -85,14 +87,17 @@ describe("Button Component", () => {
       };
       component = setUp(props);
     });
+
     it("Should render without errors", () => {
       const wrapper = findByTestAtrr(component, "Button");
       expect(wrapper.length).toBe(1);
     });
+
     it("Should render its children without errors", () => {
       const wrapper = findByTestAtrr(component, "Button-children");
       expect(wrapper.length).toBe(1);
     });
+
     it("Should NOT render a button icon", () => {
       const wrapper = findByTestAtrr(component, "Button-icon");
       expect(wrapper.length).toBe(0);

@@ -8,10 +8,15 @@ import PropTypes from "prop-types";
 const HeaderBrand = ({ type, collapse }) => {
   return (
     <Link to="/" style={{ textDecoration: "none" }}>
-      <div className="HeaderBrand-root">
-        <img className="HeaderBrand-avatar" src={Avatar} />
+      <div data-test="HeaderBrand" className="HeaderBrand-root">
+        <img
+          data-test="HeaderBrand-avatar"
+          className="HeaderBrand-avatar"
+          src={Avatar}
+        />
         <div>
           <Title
+            data-test="HeaderBrand-title"
             className={`HeaderBrand-title HeaderBrand-${type} ${
               collapse ? "HeaderBrand-collapse" : null
             }`}
@@ -20,6 +25,7 @@ const HeaderBrand = ({ type, collapse }) => {
             Prabodh Kakodkar
           </Title>
           <p
+            data-test="HeaderBrand-subtitle"
             className={`HeaderBrand-title HeaderBrand-${type} ${
               collapse ? "HeaderBrand-collapse" : null
             }`}

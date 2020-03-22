@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { findByTestAtrr, checkProps } from "../../../Services";
+import { findByTestAtrr, checkProps } from "Services";
 import Container from "./Container";
 
 const setUp = (props = {}) => {
@@ -16,10 +16,12 @@ describe("Container Component", () => {
     };
     component = setUp(props);
   });
+
   it("Should render without any errors", () => {
     const wrapper = findByTestAtrr(component, "Container");
     expect(wrapper.length).toBe(1);
   });
+
   it("Should render its children without errors", () => {
     const wrapper = findByTestAtrr(component, "Container-children");
     expect(wrapper.length).toBe(1);
