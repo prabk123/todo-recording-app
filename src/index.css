@@ -69,3 +69,9 @@ h5 {
 h6 {
   font-size: 1.25rem;
 }
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #efefef;
+}

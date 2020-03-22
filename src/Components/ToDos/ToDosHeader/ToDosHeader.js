@@ -3,6 +3,7 @@ import HeaderBrand from "Shared/HeaderBrand";
 import "./ToDosHeader.css";
 import Container from "Shared/Container";
 import Button from "Shared/Button";
+import PropTypes from "prop-types";
 
 const ToDosHeader = props => {
   const {
@@ -15,13 +16,12 @@ const ToDosHeader = props => {
     playing,
     playRecording
   } = props;
+
   const toggleRecording = () => {
-    if (recording) {
-      stopRecording();
-    } else {
-      startRecording();
-    }
+    if (recording) return stopRecording();
+    return startRecording();
   };
+
   return (
     <div className="ToDosHeader-root">
       <Container maxWidth="lg" className="ToDosHeader-container">
@@ -81,6 +81,17 @@ const ToDosHeader = props => {
       </Container>
     </div>
   );
+};
+
+ToDosHeader.propTypes = {
+  recordLength: PropTypes.number.isRequired,
+  playing: PropTypes.bool.isRequired,
+  recording: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
+  startRecording: PropTypes.func.isRequired,
+  stopRecording: PropTypes.func.isRequired,
+  resetRecording: PropTypes.func.isRequired,
+  playRecording: PropTypes.func.isRequired
 };
 
 export default ToDosHeader;

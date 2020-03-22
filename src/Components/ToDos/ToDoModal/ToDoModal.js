@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Modal from "Shared/Modal";
 import Button from "Shared/Button";
 import "./ToDoModal.css";
+import PropTypes from "prop-types";
 
 class ToDoModal extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class ToDoModal extends Component {
     this.state = { name: "", description: "", error: "" };
 
     this.handleChange = this.handleChange.bind(this);
-    this.hanleSubmit = this.hanleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -28,18 +29,18 @@ class ToDoModal extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  hanleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     const { name, description } = this.state;
-    const { type, selectedTodo } = this.props;
+    const { type, selectedTodo, createToDo, updateTodo, onClose } = this.props;
     if (name && description) {
       if (type === "create") {
-        this.props.createToDo(name, description);
-        this.props.onClose();
+        createToDo(name, description);
+        onClose();
       } else {
         const newTodo = { ...selectedTodo, name, description };
-        this.props.updateTodo(newTodo);
-        this.props.onClose();
+        updateTodo(newTodo);
+        onClose();
       }
       this.setState({ name: "", description: "", error: "" });
     } else {
@@ -53,7 +54,7 @@ class ToDoModal extends Component {
     const { open, onClose, type } = this.props;
     return (
       <Modal open={open} onClose={onClose} maxWidth={400}>
-        <form autoComplete="off" onSubmit={this.hanleSubmit}>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
           <div style={{ position: "relative" }}>
             {this.state.error ? (
               <div className="ToDoModal-error">{this.state.error}</div>
@@ -84,5 +85,28 @@ class ToDoModal extends Component {
     );
   }
 }
+
+ToDoModal.defaultProps = {
+  open: false,
+  type: "create",
+  selectedTodo: null,
+  onClose: () => {},
+  createToDo: () => {},
+  updateTodo: () => {}
+};
+
+ToDoModal.propTypes = {
+  open: PropTypes.bool,
+  type: PropTypes.string,
+  selectedTodo: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    createdAt: PropTypes.instanceOf(Date)
+  }),
+  onClose: PropTypes.func,
+  createToDo: PropTypes.func,
+  updateTodo: PropTypes.func
+};
 
 export default ToDoModal;

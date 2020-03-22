@@ -37,6 +37,28 @@
   font-size: 14px;
 }
 
+.ToDoItem-delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 14px;
+  opacity: 0;
+  z-index: 99;
+}
+
+.ToDoItem-delete-text {
+  max-width: 0;
+  -webkit-transition: max-width 0.5s, padding-left 0.5s;
+  transition: max-width 0.5s, padding-left 0.5s;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* HOVER STYLES */
+
 .ToDoItem-root:hover {
   cursor: pointer;
   background: #edf6ff;
@@ -54,35 +76,17 @@
   color: #fff;
 }
 
-.ToDoItem-delete {
-  width: fit-content;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: 14px;
-  opacity: 0;
-  z-index: 99;
-}
-
 .ToDoItem-root:hover .ToDoItem-delete {
   opacity: 1;
 }
 
-.ToDoItem-delete-text {
-  max-width: 0;
-  -webkit-transition: max-width 0.5s, padding-left 0.5s;
-  transition: max-width 0.5s, padding-left 0.5s;
-  display: inline-block;
-  vertical-align: top;
-  white-space: nowrap;
-  overflow: hidden;
-  visibility: hidden;
-}
 .ToDoItem-delete:hover .ToDoItem-delete-text {
   max-width: 7rem;
   padding-left: 10px;
   visibility: visible;
 }
+
+/* PLAYBACK ANIMATION STYLES */
 
 .ToDoItem-add {
   border: 1px solid #7bb13b;
@@ -98,6 +102,8 @@
   border: 1px solid #cc4050;
   background: #ffe7e9 !important;
 }
+
+/* RESPONSIVE STYLES */
 
 @media only screen and (max-width: 800px) {
   .ToDoItem-delete-text {

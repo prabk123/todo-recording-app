@@ -3,6 +3,7 @@ import Title from "Shared/Title";
 import "./HeaderBrand.css";
 import Avatar from "Assets/avatar-nb.png";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const HeaderBrand = ({ type, collapse }) => {
   return (
@@ -34,6 +35,11 @@ const HeaderBrand = ({ type, collapse }) => {
 HeaderBrand.defaultProps = {
   type: "dark",
   collapse: false
+};
+
+HeaderBrand.propTypes = {
+  type: PropTypes.string,
+  collapse: PropTypes.bool
 };
 
 export default HeaderBrand;

@@ -3,6 +3,7 @@ import Title from "Shared/Title";
 import Button from "Shared/Button";
 import "./ToDoItem.css";
 import Moment from "react-moment";
+import PropTypes from "prop-types";
 
 const ToDoItem = props => {
   const { name, description, createdAt, onClick, onDelete, highlight } = props;
@@ -37,8 +38,21 @@ const ToDoItem = props => {
 };
 
 ToDoItem.defaultProps = {
+  name: "",
+  description: "",
+  createdAt: "",
   onClick: () => {},
-  onDelete: () => {}
+  onDelete: () => {},
+  highlight: ""
+};
+
+ToDoItem.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  createdAt: PropTypes.instanceOf(Date),
+  onClick: PropTypes.func,
+  onDelete: PropTypes.func,
+  highlight: PropTypes.string
 };
 
 export default ToDoItem;

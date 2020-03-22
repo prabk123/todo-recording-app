@@ -7,9 +7,11 @@
 .Container-sm {
   max-width: 600px;
 }
+
 .Container-md {
   max-width: 960px;
 }
+
 .Container-lg {
   max-width: 1280px;
 }

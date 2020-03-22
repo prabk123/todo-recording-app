@@ -5,21 +5,18 @@ import PropTypes from "prop-types";
 const Button = props => {
   const {
     children,
-    variant,
     className,
     style,
     color,
     withArrow,
     onClick,
-    type,
     disabled
   } = props;
   return (
     <button
       disabled={disabled}
-      type={type}
       style={style}
-      className={`Button-root Button-${variant} Button-${color} ${className} ${
+      className={`Button-root Button-${color} ${className} ${
         disabled ? "Button-disabled" : null
       }`}
       onClick={onClick}
@@ -31,7 +28,7 @@ const Button = props => {
 };
 
 Button.defaultProps = {
-  variant: "contained",
+  className: "",
   style: null,
   color: "primary",
   withArrow: true,
@@ -40,7 +37,6 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  variant: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
   color: PropTypes.string,

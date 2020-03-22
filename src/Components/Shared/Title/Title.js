@@ -43,12 +43,14 @@ const Title = ({ level, style, children, className }) => {
 
 Title.defaultProps = {
   level: 1,
-  style: null
+  style: null,
+  className: ""
 };
 
 Title.propTypes = {
   level: PropTypes.number,
-  style: PropTypes.object
+  style: PropTypes.object,
+  className: PropTypes.string
 };
 
 export default Title;

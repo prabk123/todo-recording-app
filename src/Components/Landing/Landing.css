@@ -26,13 +26,14 @@
 }
 
 .Landing-header {
-  /* display: flex; */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
 }
+
+/* WAVE EFFECT STYLES */
 
 .Landing-root .wave {
   position: absolute;
@@ -73,6 +74,8 @@
   animation-delay: -5s;
   bottom: 20px;
 }
+
+/* KEYFRAME ANIMATIONS */
 
 @keyframes animate {
   0% {

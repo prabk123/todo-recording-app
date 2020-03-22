@@ -17,6 +17,8 @@ import {
 } from "Actions/todoActions";
 import { ADD_TODO, REMOVE_TODO, UPDATE_TODO } from "Actions/actionTypes";
 import { START_RECORD } from "../../Actions/actionTypes";
+import wait from "Services/wait";
+import PropTypes from "prop-types";
 
 class ToDos extends Component {
   constructor(props) {
@@ -64,6 +66,7 @@ class ToDos extends Component {
   }
 
   async animateAction(record, type, changeIdx) {
+    // Determine action type
     const animationType =
       type === ADD_TODO
         ? "add"
@@ -72,56 +75,60 @@ class ToDos extends Component {
         : type === REMOVE_TODO
         ? "remove"
         : null;
+
     if (animationType) {
-      console.log(record);
+      // Add appropriate styles for action type
       record.todos[changeIdx].highlight = animationType;
-      await this.wait(100);
+
+      // Wait - small delay before updating DOM
+      await wait(100);
       this.setState(currentState => {
         return { todos: record.todos, playing: true };
       });
-      await this.wait(500);
+
+      // Keep styling for half a second
+      await wait(500);
       record.todos[changeIdx].highlight = undefined;
-      await this.wait(400);
+
+      // Wait to complete a second before next animation
+      await wait(400);
     }
   }
 
   async playRecording() {
-    console.log("HIT1");
+    // Initialise state so that appropriate DOM elements are disabled.
     this.setState(currentState => {
       return { playing: true };
     });
-    console.log("HIT2");
+
     const { todos } = this.props;
     let record = [...this.props.record];
+
+    // Itterates through recorded actions
     for (let i = 0; i < record.length; i++) {
-      if (record[i].actionType === UPDATE_TODO) {
-        await this.animateAction(record[i], UPDATE_TODO, record[i].changeIdx);
+      const actionType = record[i].actionType;
+      if (actionType === REMOVE_TODO || actionType === UPDATE_TODO) {
+        let recordParam =
+          actionType === REMOVE_TODO ? record[i - 1] : record[i];
+        await this.animateAction(recordParam, actionType, record[i].changeIdx);
       }
-      if (record[i].actionType === REMOVE_TODO) {
-        await this.animateAction(
-          record[i - 1],
-          REMOVE_TODO,
-          record[i].changeIdx
-        );
-      }
+      // Sets the current action competed state
       this.setState(currentState => {
         return { todos: record[i].todos };
       });
-      if (record[i].actionType === ADD_TODO) {
-        await this.animateAction(record[i], ADD_TODO, record[i].changeIdx);
+      if (actionType === START_RECORD) {
+        await wait(1000);
+        continue;
       }
-      if (record[i].actionType === START_RECORD) {
-        await this.wait(1000);
+      if (actionType === ADD_TODO) {
+        await this.animateAction(record[i], actionType, record[i].changeIdx);
       }
     }
-    await this.wait(1000);
+
+    await wait(1000);
     this.setState(currentState => {
       return { todos, playing: false };
     });
-  }
-
-  wait(ms) {
-    return new Promise((resolve, reject) => setTimeout(resolve, ms));
   }
 
   render() {
@@ -133,6 +140,8 @@ class ToDos extends Component {
       resetRecording,
       record
     } = this.props;
+    const containerClass = playing ? "ToDos-container-playback" : null;
+
     return (
       <div>
         <ToDoModal
@@ -154,9 +163,7 @@ class ToDos extends Component {
           playRecording={this.playRecording}
         />
         <Container
-          className={`ToDos-container ${
-            playing ? "ToDos-container-playback" : null
-          }`}
+          className={`ToDos-container ${containerClass}`}
           maxWidth="lg"
         >
           {playing ? (
@@ -165,13 +172,7 @@ class ToDos extends Component {
             </Title>
           ) : null}
           <Title level={4}>To Do List</Title>
-          <hr
-            style={{
-              marginTop: "20px",
-              marginBottom: "20px",
-              border: "1px solid #efefef"
-            }}
-          />
+          <hr />
           {todos.length > 0 ? (
             <div className="ToDos-grid">
               {todos.map(x => (
@@ -193,6 +194,19 @@ class ToDos extends Component {
   }
 }
 
+ToDos.propTypes = {
+  todos: PropTypes.array,
+  record: PropTypes.array,
+  recording: PropTypes.bool,
+  getTodos: PropTypes.func,
+  addTodo: PropTypes.func,
+  updateTodo: PropTypes.func,
+  removeTodo: PropTypes.func,
+  startRecording: PropTypes.func,
+  stopRecording: PropTypes.func,
+  resetRecording: PropTypes.func
+};
+
 const mapStateToProps = state => {
   return {
     todos: state.todoReducer.todos,
@@ -201,12 +215,15 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  getTodos,
-  addTodo,
-  updateTodo,
-  removeTodo,
-  startRecording,
-  stopRecording,
-  resetRecording
-})(ToDos);
+export default connect(
+  mapStateToProps,
+  {
+    getTodos,
+    addTodo,
+    updateTodo,
+    removeTodo,
+    startRecording,
+    stopRecording,
+    resetRecording
+  }
+)(ToDos);
