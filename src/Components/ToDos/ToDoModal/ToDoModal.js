@@ -53,13 +53,14 @@ class ToDoModal extends Component {
   render() {
     const { open, onClose, type } = this.props;
     return (
-      <Modal open={open} onClose={onClose} maxWidth={400}>
+      <Modal open={open} onClose={onClose} maxWidth={400} data-test="ToDoModal">
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <div style={{ position: "relative" }}>
             {this.state.error ? (
               <div className="ToDoModal-error">{this.state.error}</div>
             ) : null}
             <input
+              data-test="ToDoModal-name"
               type="text"
               name="name"
               placeholder="Give your 'To Do' a name..."
@@ -68,6 +69,7 @@ class ToDoModal extends Component {
               onChange={this.handleChange}
             />
             <textarea
+              data-test="ToDoModal-desc"
               className="ToDoModal-input ToDoModal-description"
               name="description"
               placeholder="Give your 'To Do' a description..."
@@ -76,7 +78,7 @@ class ToDoModal extends Component {
             ></textarea>
           </div>
           <div className="ToDoModal-actions">
-            <Button type="submit" color="green">
+            <Button data-test="ToDoModal-button" type="submit" color="green">
               {type === "update" ? "Update" : "Create"}
             </Button>
           </div>
@@ -97,7 +99,7 @@ ToDoModal.defaultProps = {
 
 ToDoModal.propTypes = {
   open: PropTypes.bool,
-  type: PropTypes.string,
+  type: PropTypes.oneOf(["create", "update"]),
   selectedTodo: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
