@@ -1,7 +1,7 @@
 .ToDoItem-root {
   background: #f9f9f9;
   color: #000;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 2em;
   transition: all 0.2s;
   display: flex;
@@ -46,7 +46,7 @@
   z-index: 99;
 }
 
-.ToDoItem-delete-text {
+.ToDoItem-button-text {
   max-width: 0;
   -webkit-transition: max-width 0.5s, padding-left 0.5s;
   transition: max-width 0.5s, padding-left 0.5s;
@@ -57,22 +57,35 @@
   visibility: hidden;
 }
 
+.ToDoItem-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+  color: #188cff;
+  font-size: 14px;
+}
+
+.ToDoItem-edit-text {
+  margin-left: 10px;
+}
+
 /* HOVER STYLES */
 
 .ToDoItem-root:hover {
-  cursor: pointer;
   background: #edf6ff;
 }
 
 .ToDoItem-root:hover .ToDoItem-title {
-  color: #188cff;
+  color: #c9e4ff;
 }
 .ToDoItem-root:hover .ToDoItem-description {
-  color: #188cff;
+  color: #c9e4ff;
 }
 
 .ToDoItem-root:hover .ToDoItem-created {
-  background: #188cff;
+  background: #c9e4ff;
   color: #fff;
 }
 
@@ -80,7 +93,11 @@
   opacity: 1;
 }
 
-.ToDoItem-delete:hover .ToDoItem-delete-text {
+.ToDoItem-root:hover .ToDoItem-edit {
+  opacity: 1;
+}
+
+.ToDoItem-button:hover .ToDoItem-button-text {
   max-width: 7rem;
   padding-left: 10px;
   visibility: visible;
@@ -106,7 +123,7 @@
 /* RESPONSIVE STYLES */
 
 @media only screen and (max-width: 800px) {
-  .ToDoItem-delete-text {
+  .ToDoItem-button-text {
     display: none;
   }
 }

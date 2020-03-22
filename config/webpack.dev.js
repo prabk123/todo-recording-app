@@ -6,10 +6,6 @@ const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "development",
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist")
-  },
   devServer: {
     port: 3000,
     historyApiFallback: true

@@ -1,0 +1,18 @@
+.NoToDos-img {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+.NoToDos-text {
+  text-align: center;
+}
+
+.NoToDos-icon {
+  border-radius: 10px;
+  background: #e3f1ff;
+  color: #218bef;
+  padding: 0.8em 1em;
+  margin: 0 5px;
+}

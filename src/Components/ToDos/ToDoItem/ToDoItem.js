@@ -10,19 +10,23 @@ const ToDoItem = props => {
   return (
     <div
       className={`ToDoItem-root ${highlight ? `ToDoItem-${highlight}` : ""}`}
-      onClick={onClick}
     >
       <Button
-        className="ToDoItem-delete"
+        className="ToDoItem-edit ToDoItem-button"
+        withArrow={false}
+        onClick={onClick}
+      >
+        <i className="fas fa-edit"></i>
+        <span className="ToDoItem-button-text">Edit</span>
+      </Button>
+      <Button
+        className="ToDoItem-delete ToDoItem-button"
         color="red"
         withArrow={false}
-        onClick={e => {
-          e.stopPropagation();
-          onDelete();
-        }}
+        onClick={onDelete}
       >
         <i className="fas fa-trash-alt"></i>
-        <span className="ToDoItem-delete-text">Delete</span>
+        <span className="ToDoItem-button-text">Delete</span>
       </Button>
       <div>
         <Title className="ToDoItem-title" level={6}>

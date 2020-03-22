@@ -5,6 +5,7 @@ import "./ToDos.css";
 import Container from "Shared/Container";
 import ToDoItem from "./ToDoItem";
 import ToDoModal from "./ToDoModal";
+import NoToDos from "./NoToDos";
 import { connect } from "react-redux";
 import {
   getTodos,
@@ -96,7 +97,6 @@ class ToDos extends Component {
   }
 
   async playRecording() {
-    console.log("HIT");
     // Initialise state so that appropriate DOM elements are disabled.
     this.setState(currentState => {
       return { playing: true };
@@ -165,7 +165,7 @@ class ToDos extends Component {
         />
         <Container
           className={`ToDos-container ${containerClass}`}
-          maxWidth="lg"
+          maxWidth="md"
         >
           {playing ? (
             <Title level={6} className="ToDos-playing-text">
@@ -188,7 +188,9 @@ class ToDos extends Component {
                 />
               ))}
             </div>
-          ) : null}
+          ) : (
+            <NoToDos />
+          )}
         </Container>
       </div>
     );

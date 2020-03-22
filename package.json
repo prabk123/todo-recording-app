@@ -6,13 +6,13 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "build": "webpack --config webpack.prod.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --colors",
-    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js",
+    "test": "jest --config config/jest.config.js",
+    "test:watch": "jest --config config/jest.config.js --watch",
+    "test:coverage": "jest --config config/jest.config.js --coverage --colors",
+    "dev": "webpack-dev-server --config config/webpack.dev.js",
     "analyze": "source-map-explorer dist/main.*",
-    "heroku-postbuild": "webpack --config webpack.prod.js"
+    "heroku-postbuild": "webpack --config config/webpack.prod.js"
   },
   "author": "Prabodh Kakodkar",
   "license": "ISC",
