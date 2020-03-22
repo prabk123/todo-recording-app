@@ -17,7 +17,7 @@ import {
 } from "Actions/todoActions";
 import { ADD_TODO, REMOVE_TODO, UPDATE_TODO } from "Actions/actionTypes";
 import { START_RECORD } from "../../Actions/actionTypes";
-import wait from "Services/wait";
+import { wait } from "Services";
 import PropTypes from "prop-types";
 
 class ToDos extends Component {
@@ -96,6 +96,7 @@ class ToDos extends Component {
   }
 
   async playRecording() {
+    console.log("HIT");
     // Initialise state so that appropriate DOM elements are disabled.
     this.setState(currentState => {
       return { playing: true };

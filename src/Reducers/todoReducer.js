@@ -7,7 +7,6 @@ import {
 import { START_RECORD, END_RECORD, RESET_RECORD } from "../Actions/actionTypes";
 
 const storedReducer = JSON.parse(localStorage.getItem("todoReducer"));
-console.log(storedReducer);
 let DEFAULT_STATE;
 if (storedReducer) {
   DEFAULT_STATE = storedReducer;

@@ -14,6 +14,7 @@ const Button = props => {
   } = props;
   return (
     <button
+      data-test="Button"
       disabled={disabled}
       style={style}
       className={`Button-root Button-${color} ${className} ${
@@ -22,7 +23,12 @@ const Button = props => {
       onClick={onClick}
     >
       {children}
-      {withArrow ? <i className="fas fa-angle-right Button-arrow"></i> : null}
+      {withArrow ? (
+        <i
+          data-test="Button-icon"
+          className="fas fa-angle-right Button-arrow"
+        ></i>
+      ) : null}
     </button>
   );
 };

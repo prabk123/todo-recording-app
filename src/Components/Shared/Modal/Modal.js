@@ -27,7 +27,7 @@ Modal.defaultProps = {
   onClose: () => {},
   open: false,
   maxWidth: null,
-  style: null,
+  style: {},
   className: ""
 };
 
@@ -35,7 +35,7 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
   maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  style: PropTypes.obj,
+  style: PropTypes.object,
   className: PropTypes.string
 };
 
