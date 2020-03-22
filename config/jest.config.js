@@ -5,7 +5,7 @@ module.exports = {
   coverageDirectory: "coverage",
   moduleFileExtensions: ["js", "json", "jsx"],
   moduleNameMapper: {
-    "\\.(css|sass|png|jpg|jpeg)$": "<rootDir>/config/fileMock.js",
+    "\\.(css|sass|png|jpg|jpeg|svg)$": "<rootDir>/config/fileMock.js",
     "^Shared(.*)$": "<rootDir>/src/Components/Shared$1",
     "^Assets(.*)$": "<rootDir>/src/Assets$1",
     "^Actions(.*)$": "<rootDir>/src/Actions$1",
