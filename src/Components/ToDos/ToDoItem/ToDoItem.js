@@ -9,9 +9,11 @@ const ToDoItem = props => {
   const { name, description, createdAt, onClick, onDelete, highlight } = props;
   return (
     <div
+      data-test="ToDoItem"
       className={`ToDoItem-root ${highlight ? `ToDoItem-${highlight}` : ""}`}
     >
       <Button
+        data-test="ToDoItem-edit"
         className="ToDoItem-edit ToDoItem-button"
         withArrow={false}
         onClick={onClick}
@@ -20,6 +22,7 @@ const ToDoItem = props => {
         <span className="ToDoItem-button-text">Edit</span>
       </Button>
       <Button
+        data-test="ToDoItem-delete"
         className="ToDoItem-delete ToDoItem-button"
         color="red"
         withArrow={false}
@@ -29,12 +32,14 @@ const ToDoItem = props => {
         <span className="ToDoItem-button-text">Delete</span>
       </Button>
       <div>
-        <Title className="ToDoItem-title" level={6}>
+        <Title data-test="ToDoItem-title" className="ToDoItem-title" level={6}>
           {name}
         </Title>
-        <p className="ToDoItem-description">{description}</p>
+        <p data-test="ToDoItem-desc" className="ToDoItem-description">
+          {description}
+        </p>
       </div>
-      <span className="ToDoItem-created">
+      <span data-test="ToDoItem-created" className="ToDoItem-created">
         <Moment fromNow>{createdAt}</Moment>
       </span>
     </div>
