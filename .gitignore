@@ -1,4 +1,12 @@
+# developement
 /node_modules
+.prettierrc
+
+# production
 /dist
 
-.prettierrc
+# testing
+/coverage
+
+# extra
+.DS_Store
