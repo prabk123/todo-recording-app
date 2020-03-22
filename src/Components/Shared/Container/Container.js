@@ -6,6 +6,7 @@ const Container = props => {
   const { children, className, maxWidth, style } = props;
   return (
     <div
+      data-test="Container"
       style={style}
       className={`Container-root Container-${maxWidth} ${className}`}
     >
