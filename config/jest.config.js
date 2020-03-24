@@ -6,10 +6,10 @@ module.exports = {
   moduleFileExtensions: ["js", "json", "jsx"],
   moduleNameMapper: {
     "\\.(css|sass|png|jpg|jpeg|svg)$": "<rootDir>/config/fileMock.js",
-    "^Shared(.*)$": "<rootDir>/src/Components/Shared$1",
-    "^Assets(.*)$": "<rootDir>/src/Assets$1",
-    "^Actions(.*)$": "<rootDir>/src/Actions$1",
-    "^Services(.*)$": "<rootDir>/src/Services$1"
+    "^Shared(.*)$": "<rootDir>/src/components/Shared$1",
+    "^Assets(.*)$": "<rootDir>/src/assets$1",
+    "^Actions(.*)$": "<rootDir>/src/actions$1",
+    "^Services(.*)$": "<rootDir>/src/services$1"
   },
   setupFiles: ["<rootDir>/config/enzyme.config.js"],
   testEnvironment: "jsdom",

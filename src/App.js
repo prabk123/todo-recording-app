@@ -1,10 +1,10 @@
 import React from "react";
-import Landing from "./Components/Landing";
+import Landing from "./components/Landing";
 import { Route, Switch } from "react-router-dom";
-import ToDos from "./Components/ToDos";
+import ToDos from "./components/ToDos";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./App.css";
-import ScrollToTop from "./Components/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (

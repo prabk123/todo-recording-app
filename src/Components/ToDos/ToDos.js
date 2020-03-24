@@ -16,8 +16,12 @@ import {
   stopRecording,
   resetRecording
 } from "Actions/todoActions";
-import { ADD_TODO, REMOVE_TODO, UPDATE_TODO } from "Actions/actionTypes";
-import { START_RECORD } from "../../Actions/actionTypes";
+import {
+  ADD_TODO,
+  REMOVE_TODO,
+  UPDATE_TODO,
+  START_RECORD
+} from "Actions/actionTypes";
 import { wait } from "Services";
 import PropTypes from "prop-types";
 
@@ -144,7 +148,7 @@ class ToDos extends Component {
     const containerClass = playing ? "ToDos-container-playback" : null;
 
     return (
-      <div>
+      <div data-test="ToDos">
         <ToDoModal
           type={this.state.modalType}
           open={this.state.showModal}

@@ -4,9 +4,9 @@ module.exports = {
   entry: "./src/index.js",
   resolve: {
     alias: {
-      Shared: path.resolve(__dirname, "../src/Components/Shared"),
-      Assets: path.resolve(__dirname, "../src/Assets"),
-      Actions: path.resolve(__dirname, "../src/Actions"),
+      Shared: path.resolve(__dirname, "../src/components/Shared"),
+      Assets: path.resolve(__dirname, "../src/assets"),
+      Actions: path.resolve(__dirname, "../src/actions"),
       Services: path.resolve(__dirname, "../src/Services")
     }
   },

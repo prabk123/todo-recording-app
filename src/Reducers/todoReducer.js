@@ -2,9 +2,11 @@ import {
   GET_TODOS,
   ADD_TODO,
   UPDATE_TODO,
-  REMOVE_TODO
+  REMOVE_TODO,
+  START_RECORD,
+  END_RECORD,
+  RESET_RECORD
 } from "Actions/actionTypes";
-import { START_RECORD, END_RECORD, RESET_RECORD } from "../Actions/actionTypes";
 
 const storedReducer = JSON.parse(localStorage.getItem("todoReducer"));
 let DEFAULT_STATE;
