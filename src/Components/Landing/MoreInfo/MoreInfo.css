@@ -1,0 +1,16 @@
+.MoreInfo-root {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 3em;
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+
+.MoreInfo-code {
+  font-family: "Source Code Pro", monospace !important;
+  padding: 5px;
+  font-size: 16px;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}

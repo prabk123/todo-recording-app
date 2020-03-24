@@ -23,13 +23,14 @@ const ToDosHeader = props => {
   };
 
   return (
-    <div className="ToDosHeader-root">
+    <div className="ToDosHeader-root" data-test="ToDosHeader">
       <Container maxWidth="lg" className="ToDosHeader-container">
-        <div className="ToDosHeader-brand">
+        <div data-test="ToDosHeader-brand" className="ToDosHeader-brand">
           <HeaderBrand collapse />
         </div>
         <div className="ToDosHeader-actions">
           <Button
+            data-test="ToDosHeader-add"
             disabled={playing}
             withArrow={false}
             className="ToDosHeader-btn"
@@ -39,6 +40,7 @@ const ToDosHeader = props => {
             <span className="ToDosHeader-btn-text">Add</span>
           </Button>
           <Button
+            data-test="ToDosHeader-record"
             disabled={playing || (!recording && recordLength > 0)}
             withArrow={false}
             color="red"
@@ -58,6 +60,7 @@ const ToDosHeader = props => {
             )}
           </Button>
           <Button
+            data-test="ToDosHeader-play"
             disabled={recordLength <= 0 || playing}
             withArrow={false}
             color="green"
@@ -68,6 +71,7 @@ const ToDosHeader = props => {
             <span className="ToDosHeader-btn-text">Play</span>
           </Button>
           <Button
+            data-test="ToDosHeader-reset"
             disabled={recordLength <= 0 || playing}
             withArrow={false}
             color="orange"
