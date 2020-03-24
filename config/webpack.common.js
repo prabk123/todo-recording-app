@@ -7,7 +7,7 @@ module.exports = {
       Shared: path.resolve(__dirname, "../src/components/Shared"),
       Assets: path.resolve(__dirname, "../src/assets"),
       Actions: path.resolve(__dirname, "../src/actions"),
-      Services: path.resolve(__dirname, "../src/Services")
+      Services: path.resolve(__dirname, "../src/services")
     }
   },
   module: {
