@@ -18,9 +18,9 @@ const Landing = () => {
               Welcome
             </Title>
             <p className="Landing-info">
-              Below is a little more information about the app, how it's built
-              and how to use it. If you'd rather just dive right in then click
-              "Get Started".
+              Below is a little more information about the app, and how it's
+              built. If you'd rather just dive right in then click "Get
+              Started".
             </p>
             <Link to="/todos">
               <Button color="primary">Get Started</Button>

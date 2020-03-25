@@ -6,13 +6,13 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "build": "webpack --config config/webpack.prod.js",
+    "build": "webpack -p --config config/webpack.prod.js",
     "test": "jest --config config/jest.config.js",
     "test:watch": "jest --config config/jest.config.js --watch",
     "test:coverage": "jest --config config/jest.config.js --coverage --colors",
     "dev": "webpack-dev-server --config config/webpack.dev.js",
     "analyze": "source-map-explorer dist/main.*",
-    "heroku-postbuild": "webpack --config config/webpack.prod.js"
+    "heroku-postbuild": "webpack -p --config config/webpack.prod.js"
   },
   "author": "Prabodh Kakodkar",
   "license": "ISC",
@@ -30,7 +30,6 @@
     "react-transition-group": "^4.3.0",
     "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.5",
-    "source-map-explorer": "^2.4.0",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
   },
@@ -53,7 +52,10 @@
     "jest": "^25.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "source-map-explorer": "^2.4.1",
     "style-loader": "^1.1.3",
+    "svg-url-loader": "^5.0.0",
+    "url-loader": "^4.0.0",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   }

@@ -17,17 +17,24 @@ module.exports = {
         use: ["html-loader"]
       },
       {
-        test: /\.(svg|png|jpg|jpeg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[hash].[ext]",
-              outputPath: "assets"
-            }
-          },
-          "image-webpack-loader"
-        ]
+        test: /\.(jpe?g|png|gif)$/,
+        loader: "url-loader",
+        options: {
+          limit: 10 * 1024
+        }
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-url-loader",
+        options: {
+          limit: 10 * 1024,
+          noquotes: true
+        }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: "image-webpack-loader",
+        enforce: "pre"
       },
       {
         test: /\.(js|jsx)$/,

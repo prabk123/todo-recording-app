@@ -12,14 +12,23 @@ const CompressionPlugin = require("compression-webpack-plugin");
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "main.[contentHash].js",
+    filename: "[name].[contentHash].bundle.js",
     path: path.resolve(__dirname, "../dist")
   },
   optimization: {
     minimizer: [
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin({ sourceMap: true })
-    ]
+    ],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
+    }
   },
   plugins: [
     new CompressionPlugin(),
@@ -35,7 +44,7 @@ module.exports = merge(common, {
       }
     })
   ],
-  devtool: "source-map",
+  devtool: false,
   module: {
     rules: [
       {
