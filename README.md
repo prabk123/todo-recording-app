@@ -1,8 +1,8 @@
-Here is a deployed [DEMO](http://todo.prabodhkakodkar.com) version of this application.
+Here is a deployed [DEMO](http://todo.prabodhkakodkar.com) version of this application. This is deployed on Heroku with a free tier so it may take a while to load as the dynos spin up.
 
 # Installation Instructions
 
-Navigate to [https://github.com/prabk123/todo-recording-app](https://github.com/prabk123/todo-recording-app) to view the github repository. You can clone the project locally by running the following:
+Navigate to [https://github.com/prabk123/todo-recording-app](https://github.com/prabk123/todo-recording-app) to view the GitHub repository. You can clone the project locally by running the following:
 
 ```zsh
 $ git clone git@github.com:prabk123/todo-recording-app.git
@@ -16,11 +16,11 @@ $ npm install
 $ npm run dev
 ```
 
-Naviagte to the app in the browser at [http://localhost:3000](http://localhost:3000) and enjoy!
+Navigate to the app in the browser at [http://localhost:3000](http://localhost:3000) and enjoy!
 
 ---
 
-If you'd like to run the production build of the application locally then you can do so as follows. Firstly make sure that you've installed all dependacies using npm install. Then run the following commands to build and spin up the server:
+If you'd like to run the production build of the application locally then you can do so as follows. Firstly make sure that you've installed all dependencies using `npm install`. Then run the following commands to build and spin up the server:
 
 ```zsh
 $ npm run build
@@ -57,7 +57,7 @@ The development bundle has been optimised for a quick spin up time, hot reloadin
 
 #### File Minification
 
-All files have been minified to reduce bundle size and increase load spped. The entry index.html file has been minified using HtmlWebpackPlugin which has been configured to remove all comments, white space and redundant attributes from the HTML file.
+All files have been minified to reduce bundle size and increase load speed. The entry index.html file has been minified using HtmlWebpackPlugin which has been configured to remove all comments, white space and redundant attributes from the HTML file.
 
 The javascript files have been minified using TerserPlugin which is webpacks standard js minifier.
 
@@ -75,7 +75,7 @@ Finally, all files are compressed during the build process to gzip format for fa
 
 ### List, create, update and remove todos.
 
-The state of the "to dos" is managed by Redux. I created a modal to add and update "to dos". On submiting the form within the modal, either an `addToDo()` or `updateToDo()` action creator is called in Redux causing the state to update.
+The state of the "to dos" is managed by Redux. I created a modal to add and update "to dos". On submitting the form within the modal, either an `addToDo()` or `updateToDo()` action creator is called in Redux causing the state to update.
 
 For removing todos I added a delete button in the top right hand corder of each listed "to do". This button appears when the "to do" in question is hovered over. Once the button is clicked a `removeToDo()` action creator will be called within Redux, updating the state to remove the specific to do.
 
@@ -85,7 +85,7 @@ I've added buttons in the header bar to start, stop and reset the recording. The
 
 ### Play recording.
 
-Once a recording has been made it can be played using the play button. This fires an asynchronous async `playRecording()` method on the ToDos component which starts animating the UI. It plays back the users interactions in the correct order using multiple `setState()` calls, spaced out by an asynchronous `await wait(ms)` fuction that waits for a predetermined number of milliseconds before the reset of the code is run. This function results in the UI being animated to show the activity of the user, marking each action with a corresponding colour and waiting for 1 second between each action.
+Once a recording has been made it can be played using the play button. This fires an asynchronous async `playRecording()` method on the ToDos component which starts animating the UI. It plays back the users interactions in the correct order using multiple `setState()` calls, spaced out by an asynchronous `await wait(ms)` function that waits for a predetermined number of milliseconds before the reset of the code is run. This function results in the UI being animated to show the activity of the user, marking each action with a corresponding colour and waiting for 1 second between each action.
 
 # Bonuses
 
@@ -93,11 +93,11 @@ Once a recording has been made it can be played using the play button. This fire
 
 #### Code Splitting
 
-As the application grows, something that is well worth doing is splitting the code into seperate bundles by routes and lazy loading only the parts of the application that are being used. For a larger application this should significantly speed up load times and make the user experience far better.
+As the application grows, something that is well worth doing is splitting the code into separate bundles by routes and lazy loading only the parts of the application that are being used. For a larger application this should significantly speed up load times and make the user experience far better.
 
 #### Feature Upgrades
 
-The application could have multiple folder to categorise "to dos". For example a folder for work, home and exercise. A good addition may also be add functionality to save multiple recodings and play any recording from a selection.
+The application could have multiple folder to categorise "to dos". For example a folder for work, home and exercise. A good addition may also be add functionality to save multiple recordings and play any recording from a selection.
 
 ## Button animations & page transitions
 

@@ -33,7 +33,7 @@ const MoreInfo = () => {
         </code>
       </pre>
       <p>
-        Naviagte to the app in the browser at{" "}
+        Navigate to the app in the browser at{" "}
         <a href="http://localhost:3000" target="_blank">
           http://localhost:3000
         </a>{" "}
@@ -94,7 +94,7 @@ const MoreInfo = () => {
       <Title level={6}>File Minification</Title>
       <p>
         All files have been minified to reduce bundle size and increase load
-        spped. The entry index.html file has been minified using
+        speed. The entry index.html file has been minified using
         HtmlWebpackPlugin which has been configured to remove all comments,
         white space and redundant attributes from the HTML file.
       </p>
@@ -131,7 +131,7 @@ const MoreInfo = () => {
       <Title level={5}>List, create, update and remove todos.</Title>
       <p>
         The state of the "to dos" is managed by Redux. I created a modal to add
-        and update "to dos". On submiting the form within the modal, either an{" "}
+        and update "to dos". On submitting the form within the modal, either an{" "}
         <code className="MoreInfo-code">addToDo()</code> or{" "}
         <code className="MoreInfo-code">updateToDo()</code> action creator is
         called in Redux causing the state to update.
@@ -165,9 +165,9 @@ const MoreInfo = () => {
         users interactions in the correct order using multiple{" "}
         <code className="MoreInfo-code">setState()</code> calls, spaced out by
         an asynchronous <code className="MoreInfo-code">await wait(ms)</code>{" "}
-        fuction that waits for a predetermined number of milliseconds before the
-        reset of the code is run. This function results in the UI being animated
-        to show the activity of the user, marking each action with a
+        function that waits for a predetermined number of milliseconds before
+        the reset of the code is run. This function results in the UI being
+        animated to show the activity of the user, marking each action with a
         corresponding colour and waiting for 1 second between each action.
       </p>
 
@@ -176,7 +176,7 @@ const MoreInfo = () => {
       <Title level={6}>Code Splitting</Title>
       <p>
         As the application grows, something that is well worth doing is
-        splitting the code into seperate bundles by routes and lazy loading only
+        splitting the code into separate bundles by routes and lazy loading only
         the parts of the application that are being used. For a larger
         application this should significantly speed up load times and make the
         user experience far better.
@@ -186,7 +186,7 @@ const MoreInfo = () => {
       <p>
         The application could have multiple folder to categorise "to dos". For
         example a folder for work, home and exercise. A good addition may also
-        be add functionality to save multiple recodings and play any recording
+        be add functionality to save multiple recordings and play any recording
         from a selection.
       </p>
 
