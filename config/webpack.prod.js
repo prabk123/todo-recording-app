@@ -44,7 +44,7 @@ module.exports = merge(common, {
       }
     })
   ],
-  devtool: false,
+  devtool: "source-map",
   module: {
     rules: [
       {
