@@ -69,14 +69,6 @@ const MoreInfo = () => {
       <pre>
         <code>$ npm run test:watch</code>
       </pre>
-      <p>
-        Generate a coverage report based on all the tests executed. A detailed
-        coverage report will be exported to the todo-recording-app/coverage
-        folder:
-      </p>
-      <pre>
-        <code>$ npm run test:coverage</code>
-      </pre>
 
       <Title level={4}>Technologies</Title>
       <p>
@@ -98,14 +90,110 @@ const MoreInfo = () => {
       </p>
 
       <Title level={5}>Production Bundle</Title>
+      <Title level={6}>File Minification</Title>
       <p>
-        The production bundle focusses on minifying files, light weight source
-        maps and optimising assets for fast delivery and load times. I've used
-        CompressionWebpackPlugin to compress files into a gzip format for faster
-        delivery. CSS files are extracted and minified using
-        MiniCssExtractPlugin so that they are loaded before the JavaScript. All
-        bundled files are content hashed so that they can be cached for faster
-        load times on subsequent loads and all assets and images are compressed.
+        All files have been minified to reduce bundle size and increase load
+        spped. The entry index.html file has been minified using
+        HtmlWebpackPlugin which has been configured to remove all comments,
+        white space and redundant attributes from the HTML file.
+      </p>
+      <p>
+        The javascript files have been minified using TerserPlugin which is
+        webpacks standard js minifier.
+      </p>
+      <p>
+        All CSS files have minimised using OptimizeCssAssetsPlugin and then
+        extracted into their own bundle using MiniCssExtractPlugin. This allows
+        all CSS to be loaded at the top of the HTML file before the javascript
+        is loaded, preventing style flickering.
+      </p>
+
+      <Title level={6}>Bundle Splitting</Title>
+      <p>
+        The javascript has been split into two bundles, a "vendors" bundle that
+        contains all the dependancies and a "main" bundle and contains the main
+        application files. A content hash has been added to the filenames so
+        that they can be cached to improve subsequent load times. By splitting
+        the bundles this way, changes can be made to the main js file while
+        keeping the vendors file cached so that the browser will not have to
+        request all the code again.
+      </p>
+
+      <Title level={6}>Compression</Title>
+      <p>
+        Finally, all files are compressed during the build process to gzip
+        format for faster delivery times. The compression resulted in a final
+        bundle size that is 68.5% less than the original bundle.
+      </p>
+
+      <Title level={4}>Requirements</Title>
+      <Title level={5}>List, create, update and remove todos.</Title>
+      <p>
+        The state of the "to dos" is managed by Redux. I created a modal to add
+        and update "to dos". On submiting the form within the modal, either an{" "}
+        <code className="MoreInfo-code">addToDo()</code> or{" "}
+        <code className="MoreInfo-code">updateToDo()</code> action creator is
+        called in Redux causing the state to update.
+      </p>
+      <p>
+        For removing todos I added a delete button in the top right hand corder
+        of each listed "to do". This button appears when the "to do" in question
+        is hovered over. Once the button is clicked a{" "}
+        <code className="MoreInfo-code">removeToDo()</code> action creator will
+        be called within Redux, updating the state to remove the specific to do.
+      </p>
+
+      <Title level={5}>Start, stop and reset recording.</Title>
+      <p>
+        I've added buttons in the header bar to start, stop and reset the
+        recording. These buttons trigger action creators in Redux which then set
+        the state to listen for user interactions. The "Record" button fires a{" "}
+        <code className="MoreInfo-code">startRecording()</code> action creator,
+        which tells the reducer to record all interactions moving forward. The
+        same button can then be clicked to stop the recording. Once a recording
+        has been made, another cannot be made until the first is reset. This can
+        be done by clicking the reset button.
+      </p>
+
+      <Title level={5}>Play recording.</Title>
+      <p>
+        Once a recording has been made it can be played using the play button.
+        This fires an asynchronous{" "}
+        <code className="MoreInfo-code">async playRecording()</code> method on
+        the ToDos component which starts animating the UI. It plays back the
+        users interactions in the correct order using multiple{" "}
+        <code className="MoreInfo-code">setState()</code> calls, spaced out by
+        an asynchronous <code className="MoreInfo-code">await wait(ms)</code>{" "}
+        fuction that waits for a predetermined number of milliseconds before the
+        reset of the code is run. This function results in the UI being animated
+        to show the activity of the user, marking each action with a
+        corresponding colour and waiting for 1 second between each action.
+      </p>
+
+      <Title level={4}>Bonuses</Title>
+      <Title level={5}>How I'd make the application better.</Title>
+      <Title level={6}>Code Splitting</Title>
+      <p>
+        As the application grows, something that is well worth doing is
+        splitting the code into seperate bundles by routes and lazy loading only
+        the parts of the application that are being used. This should
+        significantly speed up load times and make the user experience far
+        better.
+      </p>
+
+      <Title level={6}>Feature Upgrades</Title>
+      <p>
+        The application could have multiple folder to categorise "to dos". For
+        example a folder for work, home and exercise. A good addition may also
+        be add functionality to save multiple recodings and play any recording
+        from a selection.
+      </p>
+
+      <Title level={5}>Button animations &amp; page transitions</Title>
+      <p>
+        Buttons expand and button labels appear on hover. This smooth effect was
+        achieved with CSS transitions. A nice fade transition was also added
+        between page routes. This was implemented using react transition groups.
       </p>
     </div>
   );
