@@ -43,8 +43,9 @@ const MoreInfo = () => {
       <p>
         If you'd like to run the production build of the application locally
         then you can do so as follows. Firstly make sure that you've installed
-        all dependacies using <code className="MoreInfo-code">npm install</code>
-        . Then run the following commands to build and spin up the server:
+        all dependencies using{" "}
+        <code className="MoreInfo-code">npm install</code>. Then run the
+        following commands to build and spin up the server:
       </p>
       <pre>
         <code>
@@ -176,9 +177,9 @@ const MoreInfo = () => {
       <p>
         As the application grows, something that is well worth doing is
         splitting the code into seperate bundles by routes and lazy loading only
-        the parts of the application that are being used. This should
-        significantly speed up load times and make the user experience far
-        better.
+        the parts of the application that are being used. For a larger
+        application this should significantly speed up load times and make the
+        user experience far better.
       </p>
 
       <Title level={6}>Feature Upgrades</Title>
