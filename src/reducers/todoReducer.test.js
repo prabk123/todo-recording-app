@@ -104,7 +104,7 @@ describe("To Do Reducer", () => {
     expect(newState).toEqual(expectedState);
   });
 
-  it("Should return the correct state when a recording is reset", () => {
+  it("Should return the correct state when app is reset", () => {
     const NEW_DEFAULT_STATE = { ...DEFAULT_STATE };
     NEW_DEFAULT_STATE.record = [
       {
@@ -163,9 +163,12 @@ describe("To Do Reducer", () => {
         ]
       }
     ];
-    const expectedState = { ...NEW_DEFAULT_STATE };
-    expectedState.recording = false;
-    expectedState.record = [];
+    const expectedState = {
+      todos: [],
+      id: 0,
+      recording: false,
+      record: []
+    };
     const action = { type: RESET_RECORD };
     const newState = todoReducer(NEW_DEFAULT_STATE, action);
     expect(newState).toEqual(expectedState);
