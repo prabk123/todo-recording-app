@@ -1,4 +1,4 @@
-Here is a deployed [DEMO](http://todo.prabodhkakodkar.com) version of this application. This is deployed on Heroku with a free tier so it may take a while to load as the dynos spin up.
+Here is a deployed [DEMO](http://todo.prabodhkakodkar.com) version of this application. This is deployed on Heroku using a free plan, so it may take a few moments to load as the dynos spin up.
 
 # Installation Instructions
 
@@ -27,6 +27,8 @@ $ npm run build
 $ npm start
 ```
 
+Navigate to the app in the browser at [http://localhost:3000](http://localhost:3000) and enjoy!
+
 # Testing
 
 The application has been unit tested using Jest and Enzyme. The following commands will let you run the tests.
@@ -51,21 +53,21 @@ This is a single page application (SPA), built with React.js. The state manageme
 
 ## Development Bundle
 
-The development bundle has been optimised for a quick spin up time, hot reloading and strong source mapping so that developers can easily debug errors in the browser. I'm using the Error Overlay Webpack Plugin to display error messages in the browser screen (similar to create-react-app) and the webpack dev server to serve the application.
+The development bundle has been optimised for a quick spin up time, hot reloading and strong source mapping so that developers can easily debug errors in the browser. I'm using the [Error Overlay Webpack Plugin](https://github.com/smooth-code/error-overlay-webpack-plugin) to display error messages in the browser screen (similar to create-react-app) and the webpack dev server to serve the application.
 
 ## Production Bundle
 
 #### File Minification
 
-All files have been minified to reduce bundle size and increase load speed. The entry index.html file has been minified using HtmlWebpackPlugin which has been configured to remove all comments, white space and redundant attributes from the HTML file.
+All files have been minified to reduce bundle size and increase load speed. The entry index.html file has been minified using [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/) which has been configured to remove all comments, white space and redundant attributes from the HTML file.
 
-The javascript files have been minified using TerserPlugin which is webpacks standard js minifier.
+The javascript files have been minified using [TerserWebpackPlugin](https://webpack.js.org/plugins/terser-webpack-plugin/) which is webpack's standard js minifier.
 
-All CSS files have minimised using OptimizeCssAssetsPlugin and then extracted into their own bundle using MiniCssExtractPlugin. This allows all CSS to be loaded at the top of the HTML file before the javascript is loaded, preventing style flickering.
+All CSS files have minimised using [OptimizeCssAssetsPlugin](https://github.com/NMFR/optimize-css-assets-webpack-plugin) and then extracted into their own bundle using [MiniCssExtractPlugin](https://webpack.js.org/plugins/mini-css-extract-plugin/). This allows all CSS to be loaded at the top of the HTML file before the javascript is loaded, preventing style flickering.
 
 #### Bundle Splitting
 
-The javascript has been split into two bundles, a "vendors" bundle that contains all the dependancies and a "main" bundle and contains the main application files. A content hash has been added to the filenames so that they can be cached to improve subsequent load times. By splitting the bundles this way, changes can be made to the main js file while keeping the vendors file cached so that the browser will not have to request all the code again.
+The javascript has been split into two bundles, a "vendors" bundle that contains all the dependancies and a "main" bundle that contains the main application files. A content hash has been added to the filenames so that they can be cached to improve subsequent load times. By splitting the bundles this way, changes can be made to the main js file while keeping the vendors file cached so that the browser will not have to request all the code again.
 
 #### Compression
 
@@ -77,7 +79,7 @@ Finally, all files are compressed during the build process to gzip format for fa
 
 The state of the "to dos" is managed by Redux. I created a modal to add and update "to dos". On submitting the form within the modal, either an `addToDo()` or `updateToDo()` action creator is called in Redux causing the state to update.
 
-For removing todos I added a delete button in the top right hand corder of each listed "to do". This button appears when the "to do" in question is hovered over. Once the button is clicked a `removeToDo()` action creator will be called within Redux, updating the state to remove the specific to do.
+For removing todos I added a delete button in the top right hand corder of each listed "to do". This button appears when the "to do" in question is hovered over. Once the button is clicked a `removeToDo()` action creator will be called within Redux, updating the state to remove the specific "to do".
 
 ### Start, stop and reset recording.
 
@@ -85,7 +87,7 @@ I've added buttons in the header bar to start, stop and reset the recording. The
 
 ### Play recording.
 
-Once a recording has been made it can be played using the play button. This fires an asynchronous async `playRecording()` method on the ToDos component which starts animating the UI. It plays back the users interactions in the correct order using multiple `setState()` calls, spaced out by an asynchronous `await wait(ms)` function that waits for a predetermined number of milliseconds before the reset of the code is run. This function results in the UI being animated to show the activity of the user, marking each action with a corresponding colour and waiting for 1 second between each action.
+Once a recording has been made it can be played using the play button. This fires an asynchronous async `playRecording()` method on the ToDos component which starts animating the UI. It plays back the users interactions in the correct order using multiple `setState()` calls, spaced out by an asynchronous `await wait(ms)` function that waits for a predetermined number of milliseconds before the rest of the code is run. This function results in the UI being animated to show the user taking each action, highlighted with a corresponding colour, and waiting for 1 second between each action.
 
 # Bonuses
 
@@ -101,4 +103,4 @@ The application could have multiple folder to categorise "to dos". For example a
 
 ## Button animations & page transitions
 
-Buttons expand and button labels appear on hover. This smooth effect was achieved with CSS transitions. A nice fade transition was also added between page routes. This was implemented using react transition groups.
+Buttons expand and button labels appear on hover. This smooth effect was achieved with CSS transitions. A nice fade transition was also added between page routes. This was implemented using [react transition group](https://reactcommunity.org/react-transition-group/).

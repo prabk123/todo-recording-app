@@ -85,8 +85,14 @@ const MoreInfo = () => {
       <p>
         The development bundle has been optimised for a quick spin up time, hot
         reloading and strong source mapping so that developers can easily debug
-        errors in the browser. I'm using the Error Overlay Webpack Plugin to
-        display error messages in the browser screen (similar to
+        errors in the browser. I'm using the{" "}
+        <a
+          href="https://github.com/smooth-code/error-overlay-webpack-plugin"
+          target="_blank"
+        >
+          Error Overlay Webpack Plugin
+        </a>{" "}
+        to display error messages in the browser screen (similar to
         create-react-app) and the webpack dev server to serve the application.
       </p>
 
@@ -95,24 +101,48 @@ const MoreInfo = () => {
       <p>
         All files have been minified to reduce bundle size and increase load
         speed. The entry index.html file has been minified using
-        HtmlWebpackPlugin which has been configured to remove all comments,
-        white space and redundant attributes from the HTML file.
+        <a
+          href="https://webpack.js.org/plugins/html-webpack-plugin/"
+          target="_blank"
+        >
+          HtmlWebpackPlugin
+        </a>{" "}
+        which has been configured to remove all comments, white space and
+        redundant attributes from the HTML file.
       </p>
       <p>
-        The javascript files have been minified using TerserPlugin which is
-        webpacks standard js minifier.
+        The javascript files have been minified using{" "}
+        <a
+          href="https://webpack.js.org/plugins/terser-webpack-plugin/"
+          target="_blank"
+        >
+          TerserWebpackPlugin
+        </a>{" "}
+        which is webpack's standard js minifier.
       </p>
       <p>
-        All CSS files have minimised using OptimizeCssAssetsPlugin and then
-        extracted into their own bundle using MiniCssExtractPlugin. This allows
-        all CSS to be loaded at the top of the HTML file before the javascript
-        is loaded, preventing style flickering.
+        All CSS files have minimised using{" "}
+        <a
+          href="https://github.com/NMFR/optimize-css-assets-webpack-plugin"
+          target="_blank"
+        >
+          OptimizeCssAssetsPlugin
+        </a>{" "}
+        and then extracted into their own bundle using{" "}
+        <a
+          href="https://webpack.js.org/plugins/mini-css-extract-plugin/"
+          target="_blank"
+        >
+          MiniCssExtractPlugin
+        </a>
+        . This allows all CSS to be loaded at the top of the HTML file before
+        the javascript is loaded, preventing style flickering.
       </p>
 
       <Title level={6}>Bundle Splitting</Title>
       <p>
         The javascript has been split into two bundles, a "vendors" bundle that
-        contains all the dependancies and a "main" bundle and contains the main
+        contains all the dependancies and a "main" bundle that contains the main
         application files. A content hash has been added to the filenames so
         that they can be cached to improve subsequent load times. By splitting
         the bundles this way, changes can be made to the main js file while
@@ -141,7 +171,8 @@ const MoreInfo = () => {
         of each listed "to do". This button appears when the "to do" in question
         is hovered over. Once the button is clicked a{" "}
         <code className="MoreInfo-code">removeToDo()</code> action creator will
-        be called within Redux, updating the state to remove the specific to do.
+        be called within Redux, updating the state to remove the specific "to
+        do".
       </p>
 
       <Title level={5}>Start, stop and reset recording.</Title>
@@ -166,9 +197,9 @@ const MoreInfo = () => {
         <code className="MoreInfo-code">setState()</code> calls, spaced out by
         an asynchronous <code className="MoreInfo-code">await wait(ms)</code>{" "}
         function that waits for a predetermined number of milliseconds before
-        the reset of the code is run. This function results in the UI being
-        animated to show the activity of the user, marking each action with a
-        corresponding colour and waiting for 1 second between each action.
+        the rest of the code is run. This function results in the UI being
+        animated to show the user taking each action, highlighted with a
+        corresponding colour, and waiting for 1 second between each action.
       </p>
 
       <Title level={4}>Bonuses</Title>
@@ -194,7 +225,14 @@ const MoreInfo = () => {
       <p>
         Buttons expand and button labels appear on hover. This smooth effect was
         achieved with CSS transitions. A nice fade transition was also added
-        between page routes. This was implemented using react transition groups.
+        between page routes. This was implemented using{" "}
+        <a
+          href="https://reactcommunity.org/react-transition-group/"
+          target="_blank"
+        >
+          react transition group
+        </a>
+        .
       </p>
     </div>
   );
