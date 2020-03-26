@@ -79,7 +79,7 @@ const ToDosHeader = props => {
             onClick={resetRecording}
           >
             <i className="fas fa-redo-alt"></i>
-            <span className="ToDosHeader-btn-text">Reset Recording</span>
+            <span className="ToDosHeader-btn-text">Clear All</span>
           </Button>
         </div>
       </Container>

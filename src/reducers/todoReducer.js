@@ -115,6 +115,8 @@ const todoReducer = (state = DEFAULT_STATE, action) => {
     case RESET_RECORD:
       newState = {
         ...state,
+        todos: [],
+        id: 0,
         recording: false,
         record: []
       };
