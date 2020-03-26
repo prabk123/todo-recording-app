@@ -61,7 +61,7 @@ const ToDosHeader = props => {
           </Button>
           <Button
             data-test="ToDosHeader-play"
-            disabled={recordLength <= 0 || playing}
+            disabled={recordLength <= 0 || playing || recording}
             withArrow={false}
             color="green"
             className="ToDosHeader-btn"
@@ -72,7 +72,7 @@ const ToDosHeader = props => {
           </Button>
           <Button
             data-test="ToDosHeader-reset"
-            disabled={recordLength <= 0 || playing}
+            disabled={playing || recording}
             withArrow={false}
             color="orange"
             className="ToDosHeader-btn"
